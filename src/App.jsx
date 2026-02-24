@@ -83,7 +83,7 @@ function App() {
           </div>
 
 
-          <div className="bg-gray-900 p-6 rounded-xl">
+          {/* <div className="bg-gray-900 p-6 rounded-xl">
             <h3 className="text-xl font-semibold">
               Book Sharing Platform
             </h3>
@@ -102,7 +102,7 @@ function App() {
             <p className="text-gray-400 mt-3">
               TrOCR based OCR for low quality images
             </p>
-          </div>
+          </div> */}
 
         </div>
 
