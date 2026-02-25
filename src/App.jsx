@@ -71,15 +71,12 @@ function App() {
           </div>
           <button
             type="button"
-            className="theme-toggle"
+            className="theme-icon-button"
             onClick={toggleTheme}
             aria-label="Toggle color mode"
           >
-            <span className="theme-toggle-track">
-              <span className="theme-toggle-thumb" />
-            </span>
-            <span className="theme-toggle-text">
-              {theme === 'dark' ? 'Dark' : 'Light'}
+            <span className="theme-icon-button-inner">
+              {theme === 'dark' ? '☾' : '☀'}
             </span>
           </button>
         </div>
