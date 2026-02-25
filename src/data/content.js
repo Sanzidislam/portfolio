@@ -17,7 +17,7 @@ export const hero = {
   focusAreas: [
     'Software Engineering',
     'Full Stack Development',
-    'Computer Vision & OCR',
+    'Computer Vision',
   ],
 };
 
@@ -27,7 +27,7 @@ export const about = {
   paragraphs: [
     'I am a Computer Science and Engineering student at the University of Chittagong with a strong interest in software engineering and computer vision. I enjoy building practical software systems and exploring how intelligent algorithms can be applied to real-world problems.',
     'My work mainly focuses on full-stack web development, database design, and computer vision applications. I like designing structured and efficient software systems and learning new technologies through hands-on projects.',
-    'Recently, I have been focusing on computer vision and machine learning techniques, especially OCR systems for extracting text from low-quality images. I am comfortable working in Linux environments and enjoy building tools and systems from scratch.',
+    'Recently, I have been focusing on computer vision and machine learning techniques. I am comfortable working in Linux environments and enjoy building tools and systems from scratch.',
   ],
 };
 
