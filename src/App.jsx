@@ -1,131 +1,153 @@
+import profileImage from './assets/images/profile_picture.jpg';
+import {
+  sections,
+  hero,
+  about,
+  skills,
+  projects,
+  education,
+  links,
+} from './data/content';
+
 function App() {
   return (
     <div className="bg-gray-950 text-white min-h-screen">
-
-      {/* Navbar */}
-
-      <nav className="p-6 flex justify-between">
-        <h1 className="text-2xl font-bold">
-          Sanzid
-        </h1>
-
-        <div className="space-x-6">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+      <nav className="portfolio-nav">
+        <div className="portfolio-nav-left">
+          <span className="portfolio-logo">{hero.name}</span>
+        </div>
+        <div className="portfolio-nav-links">
+          {sections.nav.map((item) => (
+            <a key={item.id} href={`#${item.id}`}>
+              {item.label}
+            </a>
+          ))}
         </div>
       </nav>
 
+      <main className="portfolio-main">
+        <section className="portfolio-hero">
+          <div className="portfolio-hero-text">
+            <p className="portfolio-hero-kicker">
+              {hero.kicker}
+            </p>
+            <h1 className="portfolio-hero-title">
+              Hi, I&apos;m {hero.name}
+            </h1>
+            <p className="portfolio-hero-subtitle">{hero.subtitle}</p>
+            <div className="portfolio-hero-tags">
+              {hero.focusAreas.map((area) => (
+                <span key={area} className="portfolio-tag">
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="portfolio-hero-image-wrapper">
+            <img
+              src={profileImage}
+              alt={`${hero.name} profile`}
+              className="portfolio-hero-image"
+            />
+          </div>
+        </section>
 
-      {/* Hero */}
+        <section id={about.id} className="portfolio-section">
+          <h2 className="portfolio-section-title">{about.title}</h2>
+          <div className="portfolio-section-body">
+            {about.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="portfolio-paragraph">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
 
-      <section className="text-center mt-32">
+        <section id={skills.id} className="portfolio-section">
+          <h2 className="portfolio-section-title">{skills.title}</h2>
+          <div className="portfolio-grid">
+            {skills.categories.map((category) => (
+              <div key={category.label} className="portfolio-card">
+                <h3 className="portfolio-card-title">{category.label}</h3>
+                <ul className="portfolio-list">
+                  {category.items.map((item) => (
+                    <li key={item} className="portfolio-list-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <h1 className="text-5xl font-bold mb-4">
-          Hi, I'm Sanzid
-        </h1>
+        <section id={projects.id} className="portfolio-section">
+          <h2 className="portfolio-section-title">{projects.title}</h2>
+          <div className="portfolio-grid">
+            {projects.items.map((project) => (
+              <article key={project.name} className="portfolio-card">
+                <h3 className="portfolio-card-title">{project.name}</h3>
+                <p className="portfolio-card-text">{project.description}</p>
+                <div className="portfolio-card-tags">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="portfolio-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        <p className="text-xl text-gray-400">
-          Software Engineer | Full Stack Developer
-        </p>
-
-      </section>
-
-
-      {/* About */}
-
-      <section id="about" className="mt-40 max-w-3xl mx-auto p-6">
-
-        <h2 className="text-3xl font-bold mb-6">
-          About Me
-        </h2>
-
-        <p className="text-gray-300 leading-7">
-
-          I am a Computer Science student at University of Chittagong.
-          I build full-stack applications using React, Node.js and MySQL.
-          Currently working on Computer Vision and OCR systems.
-
-        </p>
-
-      </section>
-
-
-      {/* Projects */}
-
-      <section id="projects" className="mt-40 max-w-5xl mx-auto p-6">
-
-        <h2 className="text-3xl font-bold mb-10">
-          Projects
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-
-          <div className="bg-gray-900 p-6 rounded-xl">
-            <h3 className="text-xl font-semibold">
-              Event Management System
-            </h3>
-
-            <p className="text-gray-400 mt-3">
-              React + Node.js + MySQL event platform
+        <section id={education.id} className="portfolio-section">
+          <h2 className="portfolio-section-title">{education.title}</h2>
+          <div className="portfolio-education">
+            <h3 className="portfolio-card-title">{education.degree}</h3>
+            <p className="portfolio-paragraph">{education.institution}</p>
+            <p className="portfolio-paragraph">
+              {education.expectedGraduation}
             </p>
           </div>
+        </section>
 
-
-          <div className="bg-gray-900 p-6 rounded-xl">
-            <h3 className="text-xl font-semibold">
-              Flutter eCommerce App
-            </h3>
-
-            <p className="text-gray-400 mt-3">
-              Mobile shopping app with Firebase Auth
-            </p>
+        <section id="contact" className="portfolio-section portfolio-contact">
+          <h2 className="portfolio-section-title">Contact</h2>
+          <p className="portfolio-paragraph portfolio-contact-text">
+            If you would like to get in touch regarding projects, collaboration,
+            or opportunities, feel free to reach out.
+          </p>
+          <div className="portfolio-contact-links">
+            {links.email && (
+              <a href={`mailto:${links.email}`} className="portfolio-link">
+                Email
+              </a>
+            )}
+            {links.github && (
+              <a
+                href={links.github}
+                className="portfolio-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+            )}
+            {links.linkedin && (
+              <a
+                href={links.linkedin}
+                className="portfolio-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            )}
           </div>
-
-
-          {/* <div className="bg-gray-900 p-6 rounded-xl">
-            <h3 className="text-xl font-semibold">
-              Book Sharing Platform
-            </h3>
-
-            <p className="text-gray-400 mt-3">
-              Full stack book exchange platform
-            </p>
-          </div>
-
-
-          <div className="bg-gray-900 p-6 rounded-xl">
-            <h3 className="text-xl font-semibold">
-              OCR Research Project
-            </h3>
-
-            <p className="text-gray-400 mt-3">
-              TrOCR based OCR for low quality images
-            </p>
-          </div> */}
-
-        </div>
-
-      </section>
-
-
-      {/* Contact */}
-
-      <section id="contact" className="mt-40 text-center pb-20">
-
-        <h2 className="text-3xl font-bold mb-6">
-          Contact
-        </h2>
-
-        <p className="text-gray-400">
-          sanzid@email.com
-        </p>
-
-      </section>
-
-
+        </section>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
