@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import profileImage from './assets/images/profile_picture.jpg';
 import {
   sections,
@@ -10,18 +11,77 @@ import {
 } from './data/content';
 
 function App() {
+  const [theme, setTheme] = useState('dark');
+  const [activeSection, setActiveSection] = useState(sections.nav[0]?.id ?? '');
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        if (visible.length === 0) return;
+
+        const mostVisible = visible.reduce((current, entry) =>
+          entry.intersectionRatio > current.intersectionRatio ? entry : current,
+        );
+
+        setActiveSection(mostVisible.target.id);
+      },
+      {
+        root: null,
+        threshold: 0.3,
+        rootMargin: '0px 0px -55% 0px',
+      },
+    );
+
+    sections.nav.forEach((item) => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   return (
-    <div className="bg-gray-950 text-white min-h-screen">
+    <div className={`app-root app-root-${theme}`}>
       <nav className="portfolio-nav">
         <div className="portfolio-nav-left">
           <span className="portfolio-logo">{hero.name}</span>
         </div>
-        <div className="portfolio-nav-links">
-          {sections.nav.map((item) => (
-            <a key={item.id} href={`#${item.id}`}>
-              {item.label}
-            </a>
-          ))}
+        <div className="portfolio-nav-right">
+          <div className="portfolio-nav-links">
+            {sections.nav.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`portfolio-nav-link${
+                  activeSection === item.id ? ' portfolio-nav-link-active' : ''
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle color mode"
+          >
+            <span className="theme-toggle-track">
+              <span className="theme-toggle-thumb" />
+            </span>
+            <span className="theme-toggle-text">
+              {theme === 'dark' ? 'Dark' : 'Light'}
+            </span>
+          </button>
         </div>
       </nav>
 
