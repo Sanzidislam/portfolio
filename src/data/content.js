@@ -51,16 +51,16 @@ export const skills = {
       label: 'Tools & Environments',
       items: ['Git', 'GitHub', 'Linux', 'VS Code', 'MySQL Workbench'],
     },
-    {
-      label: 'Areas of Interest',
-      items: [
-        'Software Engineering',
-        'Computer Vision',
-        'Database Systems',
-        'Operating Systems',
-        'Full Stack Development',
-      ],
-    },
+    // {
+    //   label: 'Areas of Interest',
+    //   items: [
+    //     'Software Engineering',
+    //     'Computer Vision',
+    //     'Database Systems',
+    //     'Operating Systems',
+    //     'Full Stack Development',
+    //   ],
+    // },
   ],
 };
 

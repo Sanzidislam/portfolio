@@ -69,9 +69,9 @@ function App() {
             {skills.categories.map((category) => (
               <div key={category.label} className="portfolio-card">
                 <h3 className="portfolio-card-title">{category.label}</h3>
-                <ul className="portfolio-list">
+                <ul className="portfolio-card-tags">
                   {category.items.map((item) => (
-                    <li key={item} className="portfolio-list-item">
+                    <li key={item} className="portfolio-tag">
                       {item}
                     </li>
                   ))}

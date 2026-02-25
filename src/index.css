@@ -186,6 +186,8 @@ body {
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(18px);
   padding: 1.3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
   transition: transform 180ms ease, box-shadow 180ms ease,
     border-color 180ms ease;
 }
@@ -213,6 +215,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: auto;
 }
 
 .portfolio-list {
@@ -227,6 +230,10 @@ body {
 .portfolio-list-item {
   color: rgb(148 163 184);
   font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(79, 91, 122, 0.616);
+  background: rgba(15, 23, 42, 0.7);
 }
 
 .portfolio-education {
