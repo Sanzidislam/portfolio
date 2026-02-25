@@ -1,16 +1,36 @@
-# React + Vite
+## Sanzid Islam – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a personal portfolio built with **React** and **Vite**, styled with **Tailwind base** plus a small set of custom CSS classes.  
+All content (introduction, skills, projects, education, links) is driven from a data file so it is easy to update without touching components.
 
-Currently, two official plugins are available:
+### Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React (Vite)
+- **Styling**: Tailwind base layer + custom CSS (`src/index.css`)
+- **Tooling**: ESLint, Vite dev server
 
-## React Compiler
+### Project Structure (key files)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `src/App.jsx` – main layout and sections (Hero, About, Skills, Projects, Education, Contact)
+- `src/data/content.js` – data for text content, skills, projects, education, and links
+- `src/assets/images/profile_picture.jpg` – profile image used in the hero section
+- `src/index.css` – minimal, custom CSS for layout, glassmorphism cards, and gradients
 
-## Expanding the ESLint configuration
+### Running the project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Then open the printed local URL (usually `http://localhost:5173`) in your browser.
+
+### Updating content
+
+Edit `src/data/content.js`:
+
+- Update hero text, about paragraphs, skills, and project descriptions
+- Set your **GitHub**, **LinkedIn**, and **email** in the `links` export
+- Edit `expectedGraduation` under `education` to your real graduation year
+
+To change the look and feel (colors, gradients, card effects), adjust the `.portfolio-*` classes in `src/index.css`.
