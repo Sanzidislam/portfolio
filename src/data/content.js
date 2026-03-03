@@ -100,6 +100,6 @@ export const education = {
 export const links = {
   github: 'https://github.com/Sanzidislam',
   linkedin: 'https://www.linkedin.com/in/sanzid-islam-mahi/',
-  email: 'sanzid.csec@gmail.com',
+  email: 'sanzid.csecu@gmail.com',
 };
 
