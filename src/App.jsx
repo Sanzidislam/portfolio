@@ -12,6 +12,14 @@ import {
   links,
 } from './data/content';
 
+const toolIcons = {
+  Git: '🌿',
+  GitHub: '🐙',
+  Linux: '🐧',
+  'VS Code': '🧩',
+  'MySQL Workbench': '🗄️',
+};
+
 function App() {
   const [theme, setTheme] = useState('dark');
   const [activeSection, setActiveSection] = useState(sections.nav[0]?.id ?? '');
@@ -136,7 +144,12 @@ function App() {
                 <ul className="portfolio-card-tags">
                   {category.items.map((item) => (
                     <li key={item} className="portfolio-tag">
-                      {item}
+                      {category.label === 'Tools & Environments' && (
+                        <span className="portfolio-tool-icon" aria-hidden="true">
+                          {toolIcons[item] ?? '🛠️'}
+                        </span>
+                      )}
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -169,10 +182,19 @@ function App() {
                   ))}
                 </div>
                 <div className="portfolio-project-links">
-                  <a href={project.demoUrl} className="portfolio-link">
+                  <a href={project.demoUrl} className="portfolio-link portfolio-link-external">
+                    <span className="portfolio-link-icon" aria-hidden="true">
+                      🔗
+                    </span>
                     Live Demo
                   </a>
-                  <a href={project.repoUrl} className="portfolio-link portfolio-link-muted">
+                  <a
+                    href={project.repoUrl}
+                    className="portfolio-link portfolio-link-muted portfolio-link-external"
+                  >
+                    <span className="portfolio-link-icon" aria-hidden="true">
+                      🧠
+                    </span>
                     Source Code
                   </a>
                 </div>
@@ -233,26 +255,35 @@ function App() {
           <div className="portfolio-contact-links">
             {links.email && (
               <a href={`mailto:${links.email}`} className="portfolio-link">
+                <span className="portfolio-link-icon" aria-hidden="true">
+                  ✉️
+                </span>
                 Email
               </a>
             )}
             {links.github && (
               <a
                 href={links.github}
-                className="portfolio-link"
+                className="portfolio-link portfolio-link-external"
                 target="_blank"
                 rel="noreferrer"
               >
+                <span className="portfolio-link-icon" aria-hidden="true">
+                  🐙
+                </span>
                 GitHub
               </a>
             )}
             {links.linkedin && (
               <a
                 href={links.linkedin}
-                className="portfolio-link"
+                className="portfolio-link portfolio-link-external"
                 target="_blank"
                 rel="noreferrer"
               >
+                <span className="portfolio-link-icon" aria-hidden="true">
+                  💼
+                </span>
                 LinkedIn
               </a>
             )}
