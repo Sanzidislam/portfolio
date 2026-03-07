@@ -18,7 +18,7 @@ const iconByName = {
   Java: 'https://cdn.simpleicons.org/openjdk',
   Python: 'https://cdn.simpleicons.org/python',
   JavaScript: 'https://cdn.simpleicons.org/javascript',
-  SQL: 'https://cdn.simpleicons.org/mysql',
+  SQL: 'https://cdn.simpleicons.org/sqlite',
   React: 'https://cdn.simpleicons.org/react',
   'Node.js': 'https://cdn.simpleicons.org/nodedotjs',
   'Express.js': 'https://cdn.simpleicons.org/express',
@@ -122,10 +122,10 @@ function App() {
             <p className="portfolio-hero-subtitle">{hero.subtitle}</p>
             <p className="portfolio-paragraph">{hero.summary}</p>
             <div className="portfolio-hero-actions">
-              <a className="portfolio-link portfolio-cta-primary" href={hero.cta.resumeUrl}>
+              <a className="portfolio-link" href={hero.cta.resumeUrl}>
                 Download CV
               </a>
-              <a className="portfolio-link portfolio-cta-secondary" href={hero.cta.projectsHref}>
+              <a className="portfolio-link portfolio-link-muted" href={hero.cta.projectsHref}>
                 View Projects
               </a>
             </div>
