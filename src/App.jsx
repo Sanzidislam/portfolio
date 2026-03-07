@@ -12,13 +12,35 @@ import {
   links,
 } from './data/content';
 
-const toolIcons = {
-  Git: '🌿',
-  GitHub: '🐙',
-  Linux: '🐧',
-  'VS Code': '🧩',
-  'MySQL Workbench': '🗄️',
+const iconByName = {
+  C: 'https://cdn.simpleicons.org/c',
+  'C++': 'https://cdn.simpleicons.org/cplusplus',
+  Java: 'https://cdn.simpleicons.org/openjdk',
+  Python: 'https://cdn.simpleicons.org/python',
+  JavaScript: 'https://cdn.simpleicons.org/javascript',
+  SQL: 'https://cdn.simpleicons.org/mysql',
+  React: 'https://cdn.simpleicons.org/react',
+  'Node.js': 'https://cdn.simpleicons.org/nodedotjs',
+  'Express.js': 'https://cdn.simpleicons.org/express',
+  Flutter: 'https://cdn.simpleicons.org/flutter',
+  'Tailwind CSS': 'https://cdn.simpleicons.org/tailwindcss',
+  MySQL: 'https://cdn.simpleicons.org/mysql',
+  Oracle: 'https://cdn.simpleicons.org/oracle',
+  Git: 'https://cdn.simpleicons.org/git',
+  GitHub: 'https://cdn.simpleicons.org/github',
+  Linux: 'https://cdn.simpleicons.org/linux',
+  'VS Code': 'https://cdn.simpleicons.org/visualstudiocode',
+  'MySQL Workbench': 'https://cdn.simpleicons.org/mysql',
+  'Firebase Authentication': 'https://cdn.simpleicons.org/firebase',
+  'Linux system programming': 'https://cdn.simpleicons.org/linux',
 };
+
+function TechIcon({ name }) {
+  const src = iconByName[name];
+  if (!src) return null;
+
+  return <img src={src} alt="" aria-hidden="true" className="portfolio-tech-icon" />;
+}
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -100,10 +122,10 @@ function App() {
             <p className="portfolio-hero-subtitle">{hero.subtitle}</p>
             <p className="portfolio-paragraph">{hero.summary}</p>
             <div className="portfolio-hero-actions">
-              <a className="portfolio-link" href={hero.cta.resumeUrl}>
+              <a className="portfolio-link portfolio-cta-primary" href={hero.cta.resumeUrl}>
                 Download CV
               </a>
-              <a className="portfolio-link portfolio-link-muted" href={hero.cta.projectsHref}>
+              <a className="portfolio-link portfolio-cta-secondary" href={hero.cta.projectsHref}>
                 View Projects
               </a>
             </div>
@@ -144,11 +166,7 @@ function App() {
                 <ul className="portfolio-card-tags">
                   {category.items.map((item) => (
                     <li key={item} className="portfolio-tag">
-                      {category.label === 'Tools & Environments' && (
-                        <span className="portfolio-tool-icon" aria-hidden="true">
-                          {toolIcons[item] ?? '🛠️'}
-                        </span>
-                      )}
+                      <TechIcon name={item} />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -177,24 +195,19 @@ function App() {
                 <div className="portfolio-card-tags">
                   {project.technologies.map((tech) => (
                     <span key={tech} className="portfolio-tag">
-                      {tech}
+                      <TechIcon name={tech} />
+                      <span>{tech}</span>
                     </span>
                   ))}
                 </div>
                 <div className="portfolio-project-links">
                   <a href={project.demoUrl} className="portfolio-link portfolio-link-external">
-                    <span className="portfolio-link-icon" aria-hidden="true">
-                      🔗
-                    </span>
                     Live Demo
                   </a>
                   <a
                     href={project.repoUrl}
                     className="portfolio-link portfolio-link-muted portfolio-link-external"
                   >
-                    <span className="portfolio-link-icon" aria-hidden="true">
-                      🧠
-                    </span>
                     Source Code
                   </a>
                 </div>
@@ -255,9 +268,12 @@ function App() {
           <div className="portfolio-contact-links">
             {links.email && (
               <a href={`mailto:${links.email}`} className="portfolio-link">
-                <span className="portfolio-link-icon" aria-hidden="true">
-                  ✉️
-                </span>
+                <img
+                  src="https://cdn.simpleicons.org/gmail"
+                  alt=""
+                  aria-hidden="true"
+                  className="portfolio-tech-icon"
+                />
                 Email
               </a>
             )}
@@ -268,9 +284,12 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="portfolio-link-icon" aria-hidden="true">
-                  🐙
-                </span>
+                <img
+                  src="https://cdn.simpleicons.org/github"
+                  alt=""
+                  aria-hidden="true"
+                  className="portfolio-tech-icon"
+                />
                 GitHub
               </a>
             )}
@@ -281,9 +300,12 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="portfolio-link-icon" aria-hidden="true">
-                  💼
-                </span>
+                <img
+                  src="https://cdn.simpleicons.org/linkedin"
+                  alt=""
+                  aria-hidden="true"
+                  className="portfolio-tech-icon"
+                />
                 LinkedIn
               </a>
             )}
