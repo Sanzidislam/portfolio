@@ -122,10 +122,10 @@ function App() {
             <p className="portfolio-hero-subtitle">{hero.subtitle}</p>
             <p className="portfolio-paragraph">{hero.summary}</p>
             <div className="portfolio-hero-actions">
-              <a className="portfolio-link" href={hero.cta.resumeUrl}>
+              <a className="portfolio-link portfolio-cta-link" href={hero.cta.resumeUrl}>
                 Download CV
               </a>
-              <a className="portfolio-link portfolio-link-muted" href={hero.cta.projectsHref}>
+              <a className="portfolio-link portfolio-link-muted portfolio-cta-link" href={hero.cta.projectsHref}>
                 View Projects
               </a>
             </div>

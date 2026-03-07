@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@property --cta-glow-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
   --bg: #0b1220;
   --bg-accent: #111a2f;
@@ -368,6 +374,59 @@ body[data-theme='light'] {
   font-size: 0.82rem;
   opacity: 0.72;
   transform: translateY(-1px);
+}
+
+
+.portfolio-cta-link {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: color-mix(in srgb, var(--bg-accent) 78%, transparent);
+}
+
+.portfolio-cta-link::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--cta-glow-angle, 0deg),
+    rgba(56, 189, 248, 0.65),
+    rgba(167, 139, 250, 0.65),
+    rgba(244, 114, 182, 0.65),
+    rgba(45, 212, 191, 0.65),
+    rgba(56, 189, 248, 0.65)
+  );
+  z-index: -2;
+  filter: blur(6px);
+  opacity: 0.58;
+  animation: ctaBorderSpin 3.8s linear infinite;
+}
+
+.portfolio-cta-link::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--bg) 88%, var(--bg-accent) 12%);
+  z-index: -1;
+}
+
+.portfolio-cta-link:hover::before {
+  opacity: 0.72;
+}
+
+body[data-theme='light'] .portfolio-cta-link::after {
+  background: color-mix(in srgb, #ffffff 88%, var(--bg-accent) 12%);
+}
+
+@keyframes ctaBorderSpin {
+  from {
+    --cta-glow-angle: 0deg;
+  }
+  to {
+    --cta-glow-angle: 360deg;
+  }
 }
 
 
