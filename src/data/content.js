@@ -3,7 +3,9 @@ export const sections = {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
     { id: 'education', label: 'Education' },
+    { id: 'achievements', label: 'Achievements' },
     { id: 'contact', label: 'Contact' },
   ],
 };
@@ -14,11 +16,17 @@ export const hero = {
   kicker: 'Computer Science & Engineering · University of Chittagong',
   subtitle:
     'I build practical software systems and explore how intelligent algorithms solve real-world problems.',
+  summary:
+    'I am currently open to software engineering and full-stack development internship opportunities where I can contribute to production-ready applications.',
   focusAreas: [
     'Software Engineering',
     'Full Stack Development',
     'Computer Vision',
   ],
+  cta: {
+    resumeUrl: '#',
+    projectsHref: '#projects',
+  },
 };
 
 export const about = {
@@ -51,16 +59,6 @@ export const skills = {
       label: 'Tools & Environments',
       items: ['Git', 'GitHub', 'Linux', 'VS Code', 'MySQL Workbench'],
     },
-    // {
-    //   label: 'Areas of Interest',
-    //   items: [
-    //     'Software Engineering',
-    //     'Computer Vision',
-    //     'Database Systems',
-    //     'Operating Systems',
-    //     'Full Stack Development',
-    //   ],
-    // },
   ],
 };
 
@@ -70,21 +68,65 @@ export const projects = {
   items: [
     {
       name: 'Campus Event Management System',
+      role: 'Full Stack Developer',
       description:
-        'A full-stack web application that allows students and teachers to create and manage events and register for activities. The system supports event categories, location-based search, and user registration.',
+        'A full-stack web application that allows students and teachers to create and manage events and register for activities.',
+      impact:
+        'Implemented event categorization and location-based filtering, which significantly improved event discovery for campus users.',
+      challenges: [
+        'Designed role-based authentication and authorization flow for students and teachers.',
+        'Created performant query logic for category and location-based search.',
+      ],
       technologies: ['React', 'Node.js', 'Express.js', 'MySQL'],
+      demoUrl: '#',
+      repoUrl: '#',
     },
     {
       name: 'Flutter eCommerce Application',
+      role: 'Mobile App Developer',
       description:
         'A mobile shopping application with product browsing and user authentication features.',
+      impact:
+        'Built reusable UI components and integrated authentication flow to support fast iteration of core shopping screens.',
+      challenges: [
+        'Implemented robust authentication with Firebase and guarded routes.',
+        'Structured app state and navigation for a smooth user checkout flow.',
+      ],
       technologies: ['Flutter', 'Firebase Authentication'],
+      demoUrl: '#',
+      repoUrl: '#',
     },
     {
       name: 'Custom Linux Shell',
+      role: 'Systems Programming Developer',
       description:
         'A command-line shell implemented for an operating systems project, with support for basic commands and extensions such as job control and command aliases.',
+      impact:
+        'Improved understanding of process lifecycle, signal handling, and low-level system interactions through end-to-end shell development.',
+      challenges: [
+        'Added background process execution and job control handling.',
+        'Built alias parsing and command execution pipeline from scratch.',
+      ],
       technologies: ['C', 'C++', 'Linux system programming'],
+      demoUrl: '#',
+      repoUrl: '#',
+    },
+  ],
+};
+
+export const experience = {
+  id: 'experience',
+  title: 'Experience',
+  items: [
+    {
+      role: 'Software Engineering Project Contributor',
+      organization: 'Academic & Personal Projects',
+      period: '2023 – Present',
+      highlights: [
+        'Delivered multiple full-stack and systems projects using React, Node.js, MySQL, and Linux tooling.',
+        'Collaborated with peers on requirement analysis, implementation, and debugging.',
+        'Practiced writing modular, maintainable code with Git-based workflows.',
+      ],
     },
   ],
 };
@@ -97,9 +139,20 @@ export const education = {
   expectedGraduation: 'Expected Graduation: January 2027',
 };
 
+export const achievements = {
+  id: 'achievements',
+  title: 'Achievements & Certifications',
+  items: [
+    'Built and shipped multiple end-to-end academic software projects with modern web and mobile stacks.',
+    'Consistently practicing data structures, algorithms, and problem solving.',
+    'Actively exploring machine learning and computer vision through self-driven coursework and experimentation.',
+  ],
+};
+
 export const links = {
   github: 'https://github.com/Sanzidislam',
   linkedin: 'https://www.linkedin.com/in/sanzid-islam-mahi/',
   email: 'sanzid.csecu@gmail.com',
+  location: 'Chittagong, Bangladesh',
+  availability: 'Open to internship opportunities',
 };
-

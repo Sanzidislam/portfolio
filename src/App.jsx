@@ -6,9 +6,41 @@ import {
   about,
   skills,
   projects,
+  experience,
   education,
+  achievements,
   links,
 } from './data/content';
+
+const iconByName = {
+  C: 'https://cdn.simpleicons.org/c',
+  'C++': 'https://cdn.simpleicons.org/cplusplus',
+  Java: 'https://cdn.simpleicons.org/openjdk',
+  Python: 'https://cdn.simpleicons.org/python',
+  JavaScript: 'https://cdn.simpleicons.org/javascript',
+  SQL: 'https://cdn.simpleicons.org/sqlite',
+  React: 'https://cdn.simpleicons.org/react',
+  'Node.js': 'https://cdn.simpleicons.org/nodedotjs',
+  'Express.js': 'https://cdn.simpleicons.org/express',
+  Flutter: 'https://cdn.simpleicons.org/flutter',
+  'Tailwind CSS': 'https://cdn.simpleicons.org/tailwindcss',
+  MySQL: 'https://cdn.simpleicons.org/mysql',
+  Oracle: 'https://cdn.simpleicons.org/oracle',
+  Git: 'https://cdn.simpleicons.org/git',
+  GitHub: 'https://cdn.simpleicons.org/github',
+  Linux: 'https://cdn.simpleicons.org/linux',
+  'VS Code': 'https://cdn.simpleicons.org/visualstudiocode',
+  'MySQL Workbench': 'https://cdn.simpleicons.org/mysql',
+  'Firebase Authentication': 'https://cdn.simpleicons.org/firebase',
+  'Linux system programming': 'https://cdn.simpleicons.org/linux',
+};
+
+function TechIcon({ name }) {
+  const src = iconByName[name];
+  if (!src) return null;
+
+  return <img src={src} alt="" aria-hidden="true" className="portfolio-tech-icon" />;
+}
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -85,13 +117,18 @@ function App() {
       <main className="portfolio-main">
         <section className="portfolio-hero">
           <div className="portfolio-hero-text">
-            <p className="portfolio-hero-kicker">
-              {hero.kicker}
-            </p>
-            <h1 className="portfolio-hero-title">
-              Hi, I&apos;m {hero.name}
-            </h1>
+            <p className="portfolio-hero-kicker">{hero.kicker}</p>
+            <h1 className="portfolio-hero-title">Hi, I&apos;m {hero.name}</h1>
             <p className="portfolio-hero-subtitle">{hero.subtitle}</p>
+            <p className="portfolio-paragraph">{hero.summary}</p>
+            <div className="portfolio-hero-actions">
+              <a className="portfolio-link portfolio-cta-link" href={hero.cta.resumeUrl}>
+                Download CV
+              </a>
+              <a className="portfolio-link portfolio-link-muted portfolio-cta-link" href={hero.cta.projectsHref}>
+                View Projects
+              </a>
+            </div>
             <div className="portfolio-hero-tags">
               {hero.focusAreas.map((area) => (
                 <span key={area} className="portfolio-tag">
@@ -129,7 +166,8 @@ function App() {
                 <ul className="portfolio-card-tags">
                   {category.items.map((item) => (
                     <li key={item} className="portfolio-tag">
-                      {item}
+                      <TechIcon name={item} />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -144,14 +182,55 @@ function App() {
             {projects.items.map((project) => (
               <article key={project.name} className="portfolio-card">
                 <h3 className="portfolio-card-title">{project.name}</h3>
+                <p className="portfolio-card-text portfolio-card-role">{project.role}</p>
                 <p className="portfolio-card-text">{project.description}</p>
+                <p className="portfolio-card-text">{project.impact}</p>
+                <ul className="portfolio-list">
+                  {project.challenges.map((challenge) => (
+                    <li key={challenge} className="portfolio-list-item">
+                      {challenge}
+                    </li>
+                  ))}
+                </ul>
                 <div className="portfolio-card-tags">
                   {project.technologies.map((tech) => (
                     <span key={tech} className="portfolio-tag">
-                      {tech}
+                      <TechIcon name={tech} />
+                      <span>{tech}</span>
                     </span>
                   ))}
                 </div>
+                <div className="portfolio-project-links">
+                  <a href={project.demoUrl} className="portfolio-link portfolio-link-external">
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.repoUrl}
+                    className="portfolio-link portfolio-link-muted portfolio-link-external"
+                  >
+                    Source Code
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id={experience.id} className="portfolio-section">
+          <h2 className="portfolio-section-title">{experience.title}</h2>
+          <div className="portfolio-section-body">
+            {experience.items.map((item) => (
+              <article key={`${item.role}-${item.organization}`} className="portfolio-card">
+                <h3 className="portfolio-card-title">{item.role}</h3>
+                <p className="portfolio-card-text">{item.organization}</p>
+                <p className="portfolio-card-text">{item.period}</p>
+                <ul className="portfolio-list">
+                  {item.highlights.map((highlight) => (
+                    <li key={highlight} className="portfolio-list-item">
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -162,10 +241,19 @@ function App() {
           <div className="portfolio-education">
             <h3 className="portfolio-card-title">{education.degree}</h3>
             <p className="portfolio-paragraph">{education.institution}</p>
-            <p className="portfolio-paragraph">
-              {education.expectedGraduation}
-            </p>
+            <p className="portfolio-paragraph">{education.expectedGraduation}</p>
           </div>
+        </section>
+
+        <section id={achievements.id} className="portfolio-section">
+          <h2 className="portfolio-section-title">{achievements.title}</h2>
+          <ul className="portfolio-list">
+            {achievements.items.map((achievement) => (
+              <li key={achievement} className="portfolio-list-item">
+                {achievement}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section id="contact" className="portfolio-section portfolio-contact">
@@ -174,29 +262,50 @@ function App() {
             If you would like to get in touch regarding projects, collaboration,
             or opportunities, feel free to reach out.
           </p>
+          <p className="portfolio-paragraph">
+            {links.location} · {links.availability}
+          </p>
           <div className="portfolio-contact-links">
             {links.email && (
               <a href={`mailto:${links.email}`} className="portfolio-link">
+                <img
+                  src="https://cdn.simpleicons.org/gmail"
+                  alt=""
+                  aria-hidden="true"
+                  className="portfolio-tech-icon"
+                />
                 Email
               </a>
             )}
             {links.github && (
               <a
                 href={links.github}
-                className="portfolio-link"
+                className="portfolio-link portfolio-link-external"
                 target="_blank"
                 rel="noreferrer"
               >
+                <img
+                  src="https://cdn.simpleicons.org/github"
+                  alt=""
+                  aria-hidden="true"
+                  className="portfolio-tech-icon"
+                />
                 GitHub
               </a>
             )}
             {links.linkedin && (
               <a
                 href={links.linkedin}
-                className="portfolio-link"
+                className="portfolio-link portfolio-link-external"
                 target="_blank"
                 rel="noreferrer"
               >
+                <img
+                  src="https://cdn.simpleicons.org/linkedin"
+                  alt=""
+                  aria-hidden="true"
+                  className="portfolio-tech-icon"
+                />
                 LinkedIn
               </a>
             )}
